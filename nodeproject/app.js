@@ -24,15 +24,16 @@ let monthlyRate = rate/12
 console.log((monthlyRate).toFixed(2))
 let payment = ((monthlyRate * loanAmount)/(1-(1+monthlyRate)**(-loanTerm))).toFixed(2)
 console.log("Monthly payment is $"  + payment)
+data.push({MonthlyPay: "$"+payment})
 counter = 0
 for (let i = 0;i < loanTerm;i++){
     let interest = ((currentLoan * rate)/12).toFixed(2)
     let principal = (payment - interest).toFixed(2)
-    let monthlyPay = interest + principal
     counter +=1
     console.log("Month "+ (i+1) + ": Interest: $" + interest + ": Principal: $" + principal + ": Balance: $" + currentLoan.toFixed(2))
-    students.push({Month: counter, Interest: "$"+interest, Principal: "$"+principal,  Balance: "$"+currentLoan.toFixed(2)})
+    data.push({Month: counter, Interest: "$"+interest, Principal: "$"+principal, Balance: "$"+currentLoan.toFixed(2)})
     currentLoan -= principal;
+     
 }
     
 
